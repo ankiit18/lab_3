@@ -1,0 +1,94 @@
+﻿1. history -c && history -w
+2. history
+3. sudo apt list | grep -i python3.10
+4. wget https://www.python.org/ftp/python/3.10.10/Python-3.10.10.tgz
+5. tar -xvzf Python-3.10.10.tgz
+6. cd Python-3.10.10/
+7. sudo apt install build-essential
+8. make -j8
+9. wget https://github.com/libffi/libffi/releases/download/v3.4.2/libffi-3.4.2.tar.gz
+10. tar -xvzf libffi-3.4.2.tar.gz
+11. cd libffi-3.4.2
+12. ./configure --prefix=$HOME/libffi
+13. make -j8
+14. make -j8
+15. export LD_LIBRARY_PATH=$HOME/libffi/lib:$LD_LIBRARY_PATH
+16. export CFFLAGS="-I$HOME/libffi/include"
+17. export CFLAGS="-I$HOME/libffi/include"
+18. export LDFLAGS="-L$HOME/libffi/lib"
+19. cd $HOME/Python-3.10.10
+20. ./configure --prefix=$HOME/Python3.10 --enable-optimizations
+21. make -j8
+22. make altinstall
+23. wget https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
+24. tar -xvzf v1.2.11.tar.gz
+25. cd zlib-1.2.11
+26. ./configure --prefix=$HOME/zlib
+27. make -j8
+28. make install
+29. export CFLAGS="-I$HOME/zlib/include"
+30. export LDFLAGS="-L$HOME/zlib/lib"
+31. export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/zlib/lib"
+32. echo $CFFLAGS
+33. echo $LDFLAGS
+34. echo $LD_LIBRARY_PATH
+35. cd ../
+36. make -j8
+37. make altinstall
+38. echo $CFFLAGS
+39. echo $LDFLAGS
+40. echo $LD_LIBRARY_PATH
+41. make clean
+42. ./configure --prefix=$HOME/python3.10-with-ensurepip --with-zlib-dir=$HOME/zlib
+43. make -j8
+44. make altinstall
+45. ls $HOME/zlib/include/zlib.h
+46. cd $HOME/zlib-1.2.11
+47. cd $HOME/jatin/zlib-1.2.11
+48. cd ../
+49. cd
+50. ls
+51. cd zlib-1.2.11/
+52. ./configure --prefix=$HOME/zlib
+53. make
+54. make install
+55. ls $HOME/zlib/lib/libz.*
+56. make clean
+57. ./configure --prefix=$HOME/python3.10-with-ensurepip install CPPFLAGS="-I$HOME/zlib/include" LDFLAGS="-L$HOME/zlib/lib"
+58. cd ../
+59. ./configure --prefix=$HOME/python3.10-with-ensurepip=install CPPFLAGS="-I$HOME/zlib/include" LDFLAGS="-L$HOME/zlib/lib"
+60. make -j8
+61. make altinstall
+62. cd ../
+63. ls
+64. python3.10/bin/python3.10 --version
+65. python3.10/bin/python3.10 -m pip --version
+66. $HOME/python3.10/bin/pip3.10 install label-studio
+67. wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+68. tar -xvzf openssl-1.1.1w.tar.gz
+69. cd openssl-1.1.1w
+70. ./config --prefix=$HOME/openssl --openssldir=$HOME/openssl
+71. make install
+72. cd $HOME/Python-3.10.10
+73. cd ../
+74. ls
+75. cd $HOME/Python-3.10.10
+76. export LDFLAGS="-L$HOME/openssl/lib:$LDFLAGS"
+77. export CPPFLAGS="-I$HOME/openssl/include:$CPPFLAGS"
+78. export PKG_CONFIG_PATH="$HOME/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
+79. make clean
+80. ./configure --prefix=$HOME/python3.10 --enable-optimizations
+81. make -j8
+82. make altinstall
+83. import zlib
+84. ls $HOME/zlib/include/zlib.h
+85. cd $HOME/zlib-1.2.11
+86. cd ../
+87. ls
+88. cd Python-3.10.10/
+89. cd zlib
+90. cd zlib-1.2.11
+91. cd $HOME/zlib-1.2.11
+92. ./configure --prefix=$HOME/zlib
+93. make
+94. make install
